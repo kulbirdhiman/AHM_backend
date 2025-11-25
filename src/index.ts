@@ -22,7 +22,7 @@ app.use(
       "http://89.116.134.75:3000",
       "https://cravebuy.com",
       "https://mailer.kayhanaudio.com.au",
-      "http://ahmsmarthomes.com.au"
+      "https://ahmsmarthomes.com.au"
     ],
     credentials: true,
   })
