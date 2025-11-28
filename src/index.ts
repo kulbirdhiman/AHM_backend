@@ -5,6 +5,8 @@ import UserRouter from "./routes/User.routes";
 import categoryRoutes from "./routes/product/Categorey.route";
 import ProductRoutes from "./routes/product/product.route";
 import Uploadroute from "./routes/product/upload.route"
+import HomeRoutes from "./routes/home/home.route"
+import OrderRoutes from "./routes/order/order.route"
 import cookieParser from "cookie-parser";
 import cors from "cors";
 dotenv.config();
@@ -35,8 +37,10 @@ app.use("/api/user", UserRouter);
 app.use("/api/category", categoryRoutes);
 app.use("/api/product", ProductRoutes);
 app.use("/api/upload", Uploadroute);
+app.use("/api/home", HomeRoutes);
+app.use("/api/orders" ,OrderRoutes)
 
-connectDb();
+connectDb();  
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
