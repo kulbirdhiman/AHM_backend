@@ -22,10 +22,26 @@ const createProduct = async (req: Request, res: Response) => {
       addons,
       categoryId,
     } = req.body;
-    console.log(req.body);
+
+    console.log("📥 Incoming Body:", req.body);
+
+    // -------------------------
+    // ✅ Validate name
+    // -------------------------
+    if (!name || typeof name !== "string" || name.trim() === "") {
+      return res
+        .status(400)
+        .json({ message: "Product name is required and must be a string" });
+    }
+
+    // -------------------------
+    // ✅ Create slug safely
+    // -------------------------
     const slug = slugify(name, { lower: true, strict: true });
 
-    // check if slug already exists
+    // -------------------------
+    // ❗ Check for slug duplicate
+    // -------------------------
     const existing = await Product.findOne({ where: { slug } });
     if (existing) {
       return res
@@ -33,6 +49,9 @@ const createProduct = async (req: Request, res: Response) => {
         .json({ message: "Product with similar name already exists" });
     }
 
+    // -------------------------
+    // ✅ Create product
+    // -------------------------
     const product = await Product.create({
       name,
       slug,
@@ -50,12 +69,13 @@ const createProduct = async (req: Request, res: Response) => {
       categoryId,
     });
 
-    res.status(201).json(product);
+    return res.status(201).json(product);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error", error });
+    console.error("❌ Backend error:", error);
+    return res.status(500).json({ message: "Server error", error });
   }
 };
+
 
 // ✅ Get all products
 const getProducts = async (req: Request, res: Response) => {

@@ -2,7 +2,7 @@
   "name": "ahm-backend",
   "version": "1.0.0",
   "main": "index.js",
- "scripts": {
+  "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
@@ -15,6 +15,7 @@
   "type": "commonjs",
   "description": "",
   "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -38,6 +39,7 @@
     "@types/multer": "^2.0.0",
     "@types/multer-s3": "^3.0.3",
     "@types/node": "^24.3.1",
+    "@types/paypal__checkout-server-sdk": "^1.0.8",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.2"
   }
