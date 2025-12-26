@@ -41,6 +41,9 @@ app.use("/api/home", HomeRoutes);
 app.use("/api/orders" ,OrderRoutes)
 
 connectDb();  
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+// app.listen(PORT, () => {
+//   console.log(`Server running at http://localhost:${PORT}`);
+// });
+app.listen(PORT, '127.0.0.1', () => {
+  console.log(`Server running on http://127.0.0.1:${PORT}`);
 });
